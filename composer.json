@@ -37,7 +37,8 @@
         "kartik-v/yii2-widgets": "*",        
         "wbraganca/yii2-dynamicform": "*",
         "philippfrenzel/yii2fullcalendar":"*",
-        "kartik-v/yii2-grid": "*"
+        "kartik-v/yii2-grid": "*",
+        "kartik-v/yii2-editable": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

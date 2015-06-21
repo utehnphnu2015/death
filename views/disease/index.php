@@ -5,6 +5,8 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
+use kartik\editable\Editable;
+use app\models\Ctambon;
 
 
 /* @var $this yii\web\View */
@@ -40,13 +42,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
            // 'id',
             'dyear',
-            'amphur',
+            //'amphur',
             'tumbon',
-            'ampurname',
-            // 'tambonname',
-            // 'ncause',
-            // 'diseasethai',
-            // 'total',
+           //'ampurname',
+            [
+            'attribute' => 'ampurname',
+            'filter' => app\models\Disease::$campur,
+            'value' => function($data) {
+                return app\models\Disease::$campur[$data->ampurname];
+            },
+            'headerOptions' => ['class'=>'text-center'],
+            'contentOptions' => ['class'=>'text-center'],
+            ],  
+             'tambonname',
+             'ncause',
+             'diseasethai',
+            'total',
 
 //            [
 //                'class' => 'yii\grid\ActionColumn',
