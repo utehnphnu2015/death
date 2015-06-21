@@ -3,4 +3,5 @@
 การ sync   code
 1) git - commit
 2) git - remote - pull (เพื่อดึง code จาก github ลงมาที่ local ทำให้ local มี code เท่ากับ github)
+3) git - remote - push (เพื่อส่ง code ขึ้นไปที่ github)
 
