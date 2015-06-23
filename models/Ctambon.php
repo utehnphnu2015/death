@@ -53,4 +53,7 @@ class Ctambon extends \yii\db\ActiveRecord
             'flag_status' => 'สถานนะของพื้นที่ 0=ปกติ 1=เลิกใช้(แยก/ย้ายไปพื้นที่อื่น)',
         ];
     }
+    public function getDisease(){
+        return $this->hasMany(Disease::className(), ['tumbon'=>'tamboncode']);
+    }
 }

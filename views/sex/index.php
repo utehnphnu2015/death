@@ -1,11 +1,12 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+//use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
 use kartik\dynagrid\DynaGrid;
+use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\SexSearch */
@@ -42,9 +43,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'amphur',
             'tumbon',
             'ampurname',
-            // 'tambonname',
-            // 'sex',
-            // 'total',
+             'tambonname',
+            'sex',
+             'total',
 
             //            [
 //                'class' => 'yii\grid\ActionColumn',

@@ -75,4 +75,7 @@ class Disease extends \yii\db\ActiveRecord
             'total' => 'Total',
         ];
     }
+    public function getTumbon(){
+        return $this->hasOne(Ctambon::className(), ['tamboncode'=>'tumbon']);
+    }
 }

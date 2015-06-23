@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Disease;
+use app\models\Ctambon;
 
 /**
  * DiseaseSearch represents the model behind the search form about `app\models\Disease`.
@@ -40,6 +41,8 @@ class DiseaseSearch extends Disease
      *
      * @return ActiveDataProvider
      */
+    
+    
     public function search($params)
     {
         $query = Disease::find();
@@ -56,6 +59,7 @@ class DiseaseSearch extends Disease
             return $dataProvider;
         }
 
+        $dataProvider->query->joinWith('tumbon');
         $query->andFilterWhere([
             'id' => $this->id,
             'dyear' => $this->dyear,
@@ -65,8 +69,9 @@ class DiseaseSearch extends Disease
         $query->andFilterWhere(['like', 'amphur', $this->amphur])
             ->andFilterWhere(['like', 'tumbon', $this->tumbon])
             ->andFilterWhere(['like', 'ampurname', $this->ampurname])
-            ->andFilterWhere(['like', 'tambonname', $this->tambonname])
+           // ->andFilterWhere(['like', 'tambonname', $this->tambonname])
             ->andFilterWhere(['like', 'ncause', $this->ncause])
+            ->andFilterWhere(['like', 'ctambon.tamboncodefull', $this->tambonname])    
             ->andFilterWhere(['like', 'diseasethai', $this->diseasethai]);
 
         return $dataProvider;
