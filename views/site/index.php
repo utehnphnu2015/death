@@ -1,7 +1,15 @@
+
 <?php
+$this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
+    'depends' => [\yii\web\JqueryAsset::className()]
+]);
 /* @var $this yii\web\View */
-$this->title = 'My Yii Application';
+$this->title = 'Death Cause';
+
+//use miloschuman\highcharts\Highcharts;
+use dosamigos\chartjs\ChartJs;
 ?>
+
 <div class="site-index">
 <div class="row">
     <?php
@@ -70,17 +78,87 @@ $this->title = 'My Yii Application';
        
     </div><!-- /.col -->
 </div><!-- /.row -->
+
+<?php // echo ChartJs::widget([
+//    'type' => 'Line',
+//    'options' => [
+//        'height' => 400,
+//        'width' => 800
+//    ],
+//    'data' => [
+//        'labels' => ["2006","2007", "2008", "2009","2010", "2011", "2012", "2013", "2014"],
+//        'datasets' => [
+//            [
+//                'fillColor' => "rgba(220,220,220,0.5)",
+//                'strokeColor' => "rgba(220,220,220,1)",
+//                'pointColor' => "rgba(220,220,220,1)",
+//                'pointStrokeColor' => "#fff",
+//                'series'=>'เพศชาย',
+//                'data' => [823, 3220, 3218, 3229, 3300, 3302, 3555,3586,2633]
+//            ],
+//            [
+//                'fillColor' => "rgba(151,187,205,0.5)",
+//                'strokeColor' => "rgba(151,187,205,1)",
+//                'pointColor' => "rgba(151,187,205,1)",
+//                'pointStrokeColor' => "#fff",
+//                'data' => [639, 2441, 2460, 2467, 2644, 2596, 2746,2730,2050]
+//            ],
+//           
+//        ]
+//    ]
+//]);
+?>
+
+<?=
+\dosamigos\highcharts\HighCharts::widget([
+    
+    'clientOptions' => [
+        'chart' => [
+                'type' => 'line'
+        ],
+        'title' => [
+             'text' => 'จำนวนการตายแยกตามเพศ/ปี'
+             ],
+        'xAxis' => [
+            'categories' => [
+                '2006',
+                '2007',
+                '2008',
+                '2009',
+                '2010',
+                '2011',
+                '2012',
+                '2013',
+                '2014'
+                
+            ]
+        ],
+        'yAxis' => [
+            'title' => [
+                'text' => '',           
+            ]
+        ],
+        'series' => [
+            ['name' => 'เพศชาย', 'data' => [823, 3220, 3218, 3229, 3300, 3302, 3555,3586,2633]],
+            ['name' => 'เพศหญิง', 'data' => [639, 2441, 2460, 2467, 2644, 2596, 2746,2730,2050]]
+        ]
+    ]
+]);?>
+
     <div class="jumbotron">
-        <h1>สาเหตุการตาย</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="#"></a></p>
+        <h3>สาเหตุการตาย</h3>        
     </div>
-
     <div class="body-content">
-
-        
 
     </div>
 </div>
+<?php
+$js = <<< JS
+        
+     //alert('ddd');  
+        
+JS;
+
+$this->registerJs($js);
+
+?>

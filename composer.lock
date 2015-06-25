@@ -4,8 +4,68 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8dfde2d44f1cdf59e88f8e037307b483",
+    "hash": "51eeeabfb8396c451199fa1a77112244",
     "packages": [
+        {
+            "name": "2amigos/yii2-chartjs-widget",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2amigos/yii2-chartjs-widget.git",
+                "reference": "6637e1559cb4b365fcc3966e1776a67f03ba6c2a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2amigos/yii2-chartjs-widget/zipball/6637e1559cb4b365fcc3966e1776a67f03ba6c2a",
+                "reference": "6637e1559cb4b365fcc3966e1776a67f03ba6c2a",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/chartjs": "1.0.2",
+                "yiisoft/yii2": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "asset-installer-paths": {
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "dosamigos\\chartjs\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "2amigOS! Consulting Group",
+                    "email": "hola@2amigos.us",
+                    "homepage": "http://2amigos.us",
+                    "role": "Developer"
+                }
+            ],
+            "description": "ChartJs widget for Yii2.",
+            "homepage": "http://yiiwheels.com/extension/chartjs-widget",
+            "keywords": [
+                "2amigos",
+                "chartjs",
+                "extension",
+                "widget",
+                "yii",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2015-03-18 13:16:41"
+        },
         {
             "name": "2amigos/yii2-date-picker-widget",
             "version": "1.0.5",
@@ -131,6 +191,68 @@
                 "yii2"
             ],
             "time": "2015-04-12 22:21:58"
+        },
+        {
+            "name": "2amigos/yii2-highcharts-widget",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/2amigos/yii2-highcharts-widget.git",
+                "reference": "e820aa981335d0c7269706ad6cb2d0ae81da495b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/2amigos/yii2-highcharts-widget/zipball/e820aa981335d0c7269706ad6cb2d0ae81da495b",
+                "reference": "e820aa981335d0c7269706ad6cb2d0ae81da495b",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/highcharts-release": "4.1.4",
+                "yiisoft/yii2": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "asset-installer-paths": {
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "dosamigos\\highcharts\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "2amigOS! Consulting Group",
+                    "email": "hola@2amigos.us",
+                    "homepage": "http://2amigos.us",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Highcharts JS widget for Yii2.",
+            "homepage": "http://yiiwheels.com/extension/highcharts-widget",
+            "keywords": [
+                "2amigos",
+                "chart",
+                "extension",
+                "highcharts",
+                "widget",
+                "yii",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2015-03-16 21:55:20"
         },
         {
             "name": "almasaeed2010/adminlte",
@@ -315,6 +437,28 @@
             ]
         },
         {
+            "name": "bower-asset/chartjs",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nnnick/Chart.js.git",
+                "reference": "930b16a0af59201dcfcd1594b0e7540db4d04c9f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nnnick/Chart.js/zipball/930b16a0af59201dcfcd1594b0e7540db4d04c9f",
+                "reference": "930b16a0af59201dcfcd1594b0e7540db4d04c9f",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "Chart.js"
+                ]
+            },
+            "description": "Simple HTML5 Charts using the canvas element"
+        },
+        {
             "name": "bower-asset/fontawesome",
             "version": "v4.3.0",
             "source": {
@@ -404,6 +548,29 @@
                 "full-sized",
                 "jquery-plugin"
             ]
+        },
+        {
+            "name": "bower-asset/highcharts-release",
+            "version": "v4.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/highslide-software/highcharts-release.git",
+                "reference": "8ec04ca0aa02fe7e9584dc24b6902e4338360763"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/highslide-software/highcharts-release/zipball/8ec04ca0aa02fe7e9584dc24b6902e4338360763",
+                "reference": "8ec04ca0aa02fe7e9584dc24b6902e4338360763",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "highcharts.js",
+                    "highcharts-more.js",
+                    "modules/exporting.js"
+                ]
+            }
         },
         {
             "name": "bower-asset/jquery",
@@ -2944,16 +3111,16 @@
         },
         {
             "name": "miloschuman/yii2-highcharts-widget",
-            "version": "v4.1.5",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/miloschuman/yii2-highcharts.git",
-                "reference": "c6c2e163d2cb537b09c5f46b65fc73adc604e904"
+                "reference": "695ab0ed747d7dddcd59ab495f7ca8927aeeaa97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/miloschuman/yii2-highcharts/zipball/c6c2e163d2cb537b09c5f46b65fc73adc604e904",
-                "reference": "c6c2e163d2cb537b09c5f46b65fc73adc604e904",
+                "url": "https://api.github.com/repos/miloschuman/yii2-highcharts/zipball/695ab0ed747d7dddcd59ab495f7ca8927aeeaa97",
+                "reference": "695ab0ed747d7dddcd59ab495f7ca8927aeeaa97",
                 "shasum": ""
             },
             "require": {
@@ -2985,7 +3152,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-04-29 19:14:33"
+            "time": "2015-06-22 10:36:47"
         },
         {
             "name": "philippfrenzel/yii2fullcalendar",
@@ -4370,6 +4537,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "kartik-v/yii2-password": 20,
+        "miloschuman/yii2-highcharts-widget": 20,
         "sintret/yii2-gii-adminlte": 20,
         "sintret/yii2-chat-adminlte": 20,
         "sintret/yii2-todolist": 20,
