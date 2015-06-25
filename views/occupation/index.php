@@ -13,7 +13,7 @@ use kartik\grid\GridView;
 /* @var $searchModel app\models\OccupationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Occupations';
+//$this->title = 'Occupations';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="occupation-index">
@@ -31,40 +31,115 @@ $this->params['breadcrumbs'][] = $this->title;
     ['class'=>'kartik\grid\SerialColumn'],
 
             //'id',
-            'dyear',
             //'amphur',
-            'tumbon',
+            //'tumbon',
+            //'occu',
             [
             'attribute' => 'ampurname',
+            'header'=>'อำเภอ',    
             'filter' => app\models\Disease::$campur,
+            'filterType'=>GridView::FILTER_SELECT2,
+             'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                ],    
+            'width'=>'180px',
             'value' => function($data) {
                 return app\models\Disease::$campur[$data->ampurname];
-            },
-            'headerOptions' => ['class'=>'text-center'],
-            'contentOptions' => ['class'=>'text-center'],
+                     },     
+            'headerOptions' => ['class'=>'text-center'],   
+            'filterInputOptions'=>['placeholder'=>'เลือก อำเภอ'],
+            'format'=>'raw'
+            ],                        
+            [
+                'attribute'=>'tambonname',
+                'header'=>'ตำบล',
+                'filter'=>ArrayHelper::map(\app\models\Disease::find()->orderBy('tambonname')->asArray()->all(), 'tambonname', 'tambonname'),  
+                'vAlign'=>'middle',
+                'width'=>'50px',
+                'filterType'=>GridView::FILTER_SELECT2,           
+                'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                ],
+                'headerOptions' => ['class'=>'text-center'],
+                'filterInputOptions'=>['placeholder'=>'เลือก ตำบล'],
+                'format'=>'raw'
             ],
-             'tambonname',
-             'occu',
-             'name',       
-             'ncause',
-             'diseasethai',
              [
+                'attribute'=>'name',
+                'header'=>'อาชีพ',
+                'filter'=>ArrayHelper::map(\app\models\Occupation::find()->orderBy('name')->asArray()->all(), 'name', 'name'),  
+                'vAlign'=>'middle',
+                'width'=>'50px',
+                'filterType'=>GridView::FILTER_SELECT2,           
+                'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                ],
+                'headerOptions' => ['class'=>'text-center'],
+                'filterInputOptions'=>['placeholder'=>'เลือก อาชีพ'],
+                'format'=>'raw'
+            ],           
+            [
+                'attribute'=>'dyear',
+                'header'=>'ปี',
+                'filter'=>ArrayHelper::map(\app\models\Disease::find()->orderBy('dyear')->asArray()->all(), 'dyear', 'dyear'),  
+                'vAlign'=>'middle',
+                'width'=>'180px',
+                'filterType'=>GridView::FILTER_SELECT2,           
+                'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                ],
+                'headerOptions' => ['class'=>'text-center'],
+                'contentOptions' => ['class'=>'text-center'],
+                'filterInputOptions'=>['placeholder'=>'เลือก ปี'],
+                'format'=>'raw'
+            ],                 
+            [
+                'attribute'=>'ncause',
+                'header'=>'ICD10',
+                'filter'=>ArrayHelper::map(\app\models\Disease::find()->orderBy('ncause')->asArray()->all(), 'ncause', 'ncause'),  
+                'vAlign'=>'middle',
+                'width'=>'180px',
+                'filterType'=>GridView::FILTER_SELECT2,           
+                'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                ],
+                'headerOptions' => ['class'=>'text-center'],
+                'contentOptions' => ['class'=>'text-center'],
+                'filterInputOptions'=>['placeholder'=>'เลือก ICD10'],
+                'format'=>'raw'
+            ],                   
+            [        
+               'attribute' => 'diseasethai',
+               'header'=>'โรค',
+               'pageSummary' => 'รวมจำนวนราย ',
+                'filter'=>ArrayHelper::map(\app\models\Occupation::find()->orderBy('diseasethai')->asArray()->all(), 'diseasethai', 'diseasethai'),
+                'filterType'=>GridView::FILTER_SELECT2,           
+                'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                ],
+                'headerOptions' => ['class'=>'text-center'],
+                'filterInputOptions'=>['placeholder'=>'เลือก ชื่อโรค'],
+                'format'=>'raw'
+            ],         
+            [
             'class' => 'kartik\grid\DataColumn',
             'attribute' => 'total',
+            'header'=>'จำนวน',    
             'pageSummary' => true,
+            'filter'=>FALSE,    
             'vAlign' => 'middle',
             'contentOptions' => ['class'=>'text-center'],
              ], 
          ];           
             echo GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => $gridColumns,
-        'responsive' => true,
-        'hover' => true,
-        'floatHeader' => true,        
-        'showPageSummary' => true,
-//        'beforeHeader'=>[
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'columns' => $gridColumns,
+            'responsive' => true,
+            'hover' => true,
+            'floatHeader' => true,        
+            'showPageSummary' => true,
+    //      'beforeHeader'=>[
 //                [
 //                    'columns'=>[
 //                        ['content'=>'ลำดับที่', 'options'=>['colspan'=>1, 'class'=>'text-center warning']], 
@@ -76,7 +151,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                ]
 //                     ],
         'panel' => [           
-            'type' => GridView::TYPE_INFO,
+            'type' => GridView::TYPE_SUCCESS,
             'heading' => 'สาเหตุการตาย : จากอาชีพ ',
         ],
     ]);

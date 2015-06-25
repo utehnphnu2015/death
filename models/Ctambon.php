@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "ctambon".
@@ -56,4 +57,6 @@ class Ctambon extends \yii\db\ActiveRecord
     public function getDisease(){
         return $this->hasMany(Disease::className(), ['tumbon'=>'tamboncode']);
     }
+    
+   
 }
