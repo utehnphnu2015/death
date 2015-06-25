@@ -144,7 +144,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                    'columns'=>[
 //                        ['content'=>'ลำดับที่', 'options'=>['colspan'=>1, 'class'=>'text-center warning']], 
 //                        ['content'=>'', 'options'=>['colspan'=>1, 'class'=>'text-center warning']], 
-//                        ['content'=>'ระยะเวลาที่ประชุม', 'options'=>['colspan'=>3, 'class'=>'text-center warning']], 
+//                        ['content'=>'', 'options'=>['colspan'=>3, 'class'=>'text-center warning']], 
 //                        ['content'=>'', 'options'=>['colspan'=>1, 'class'=>'text-center warning']],
 //                    ],
 //                    'options'=>['class'=>'skip-export'] // remove this row from export
@@ -152,7 +152,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                     ],
         'panel' => [           
             'type' => GridView::TYPE_SUCCESS,
-            'heading' => 'สาเหตุการตาย : จากอาชีพ ',
+            'heading' => 'สาเหตุการตาย : แยกตามอาชีพ ',
         ],
     ]);
     ?>

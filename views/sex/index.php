@@ -12,12 +12,12 @@ use kartik\grid\GridView;
 /* @var $searchModel app\models\SexSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Sexes';
+//$this->title = 'Sexes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="sex-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<!--    <h1><?= Html::encode($this->title) ?></h1>-->
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 <!--    <p>
@@ -25,53 +25,114 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>-->
 
     <?php Pjax::begin();?> 
-    <?php echo \kartik\grid\GridView::widget([
-    'dataProvider' => $dataProvider,
-    'filterModel'=>$searchModel,    
-    'responsive' => TRUE,
-    'hover' => true,
-    'floatHeader' => true,
-    'panel' => [
-        'before' => '',
-        'type' => \kartik\grid\GridView::TYPE_SUCCESS,        
-    ],
-    
-    'columns' => [
+    <?php
+    $gridColumns = [
+    ['class'=>'kartik\grid\SerialColumn'],
 
            // 'id',
-            'dyear',
-            'amphur',
-            'tumbon',
-            'ampurname',
-             'tambonname',
-            'sex',
-             'total',
+            //'tumbon',
+            //'amphur',
+            [
+            'attribute' => 'sex',
+            'header'=>'เพศ',
+            'width'=>'50px',   
+            'filter' => app\models\Sex::$dsex,
+            'filterType'=>GridView::FILTER_SELECT2,
+             'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                ],    
+            'width'=>'180px',
+            'value' => function($data) {
+                return app\models\Sex::$dsex[$data->sex];
+                     },     
+            'headerOptions' => ['class'=>'text-center'],   
+            'filterInputOptions'=>['placeholder'=>'เลือก เพศ'],
+            'format'=>'raw'
+            ],
+            [
+            'attribute' => 'ampurname',
+            'header'=>'อำเภอ',    
+            'filter' => app\models\Sex::$campur,
+            'filterType'=>GridView::FILTER_SELECT2,
+             'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                ],    
+            'width'=>'150px',
+            'value' => function($data) {
+                return app\models\Sex::$campur[$data->ampurname];
+                     },     
+            'headerOptions' => ['class'=>'text-center'],   
+            'filterInputOptions'=>['placeholder'=>'เลือก อำเภอ'],
+            'format'=>'raw'
+            ],
+            
+            [
+                'attribute'=>'tambonname',
+                'header'=>'ตำบล',
+                'filter'=>ArrayHelper::map(\app\models\Sex::find()->orderBy('tambonname')->asArray()->all(), 'tambonname', 'tambonname'),  
+                'vAlign'=>'middle',
+                'width'=>'120px',
+                'filterType'=>GridView::FILTER_SELECT2,           
+                'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                ],
+                'headerOptions' => ['class'=>'text-center'],
+                'filterInputOptions'=>['placeholder'=>'เลือก ตำบล'],
+                'format'=>'raw'
+            ],                 
+            [
+                'attribute'=>'dyear',
+                'header'=>'ปี',
+                'pageSummary' => 'รวมจำนวนราย ',
+                'filter'=>ArrayHelper::map(\app\models\Sex::find()->orderBy('dyear')->asArray()->all(), 'dyear', 'dyear'),  
+                'vAlign'=>'middle',
+                'width'=>'50px',
+                'filterType'=>GridView::FILTER_SELECT2,           
+                'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                ],
+                'headerOptions' => ['class'=>'text-center'],
+                'contentOptions' => ['class'=>'text-center'],
+                'filterInputOptions'=>['placeholder'=>'เลือก ปี'],
+                'format'=>'raw'
+            ],                        
+            [
+            'class' => 'kartik\grid\DataColumn',
+            'attribute' => 'total',
+            'header'=>'จำนวน',
+            'width'=>'50px',    
+            'filter'=>FALSE,   
+            'pageSummary' => true,
+            'vAlign' => 'middle',
+            'headerOptions' => ['class'=>'text-center'],    
+            'contentOptions' => ['class'=>'text-center'],
+             ],
 
-            //            [
-//                'class' => 'yii\grid\ActionColumn',
-//                'options'=>['style'=>'width:90px;'],
-//                'template'=>'<div class="btn-group btn-group-sm" role="group" aria-label="...">{update}{view}{delete}</div>',
-//                'buttons'=>[
-//                    'view'=>function($url,$model,$key){
-//                        return Html::a('<i class="glyphicon glyphicon-eye-open"></i>',$url,['class'=>'btn btn-default']);
-//                    },                    
-//                   'update'=>function($url,$model,$key){                        
-//                       return  Html::a('<i class="glyphicon glyphicon-pencil"></i> Approve', ['occupation/update', 'id' => $model->id], ['class' => 'btn btn-success']);
-//                    
-//                   },                  
-//                            
-//                    'delete'=>function($url,$model,$key){
-//                         return Html::a('<i class="glyphicon glyphicon-trash"></i>  Delete !?', $url,[
-//                               'title' => Yii::t('yii', 'Delete'),
-//                                'data-confirm' => Yii::t('yii', 'คุณต้องการลบไฟล์นี้?'),
-//                                'data-method' => 'post',
-//                                'data-pjax' => '0',
-//                                'class'=>'btn btn-danger'
-//                                ]);
-//                    }
+           ];           
+            echo GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'columns' => $gridColumns,
+            'responsive' => true,
+            'hover' => true,
+            'floatHeader' => true,        
+            'showPageSummary' => true,
+    //      'beforeHeader'=>[
+//                [
+//                    'columns'=>[
+//                        ['content'=>'ลำดับที่', 'options'=>['colspan'=>1, 'class'=>'text-center warning']], 
+//                        ['content'=>'', 'options'=>['colspan'=>1, 'class'=>'text-center warning']], 
+//                        ['content'=>'', 'options'=>['colspan'=>3, 'class'=>'text-center warning']], 
+//                        ['content'=>'', 'options'=>['colspan'=>1, 'class'=>'text-center warning']],
+//                    ],
+//                    'options'=>['class'=>'skip-export'] // remove this row from export
 //                ]
-//            ], 
-        ]
-    ]); ?>
+//                     ],
+        'panel' => [           
+            'type' => GridView::TYPE_WARNING,
+            'heading' => 'สาเหตุการตาย : แยกตามเพศ ',
+        ],
+    ]);
+    ?>
 <?php Pjax::end();?>
 </div>

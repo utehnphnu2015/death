@@ -1,22 +1,23 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+//use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
 use kartik\dynagrid\DynaGrid;
+use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\YearSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Years';
+//$this->title = 'Years';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="year-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<!--    <h1><?= Html::encode($this->title) ?></h1>-->
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 <!--    <p>
@@ -24,57 +25,146 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>-->
 
     <?php Pjax::begin();?> 
-    <?php echo \kartik\grid\GridView::widget([
-    'dataProvider' => $dataProvider,
-    'filterModel'=>$searchModel,    
-    'responsive' => TRUE,
-    'hover' => true,
-    'floatHeader' => true,
-    'panel' => [
-        'before' => '',
-        'type' => \kartik\grid\GridView::TYPE_SUCCESS,        
-    ],
-    
-    'columns' => [
+    <?php
+    $gridColumns = [
+    ['class'=>'kartik\grid\SerialColumn'],
 
             //'id',
-            'ncause',
-            'diseasethai',
-            '2006',
-            '2007',
-             '2008',
-             '2009',
-             '2010',
-             '2011',
-             '2012',
-             '2013',
-             '2014',
+           [
+                'attribute'=>'ncause',
+                'header'=>'ICD10',
+                'filter'=>ArrayHelper::map(\app\models\Year::find()->orderBy('ncause')->asArray()->all(), 'ncause', 'ncause'),  
+                'vAlign'=>'middle',
+                'width'=>'180px',
+                'filterType'=>GridView::FILTER_SELECT2,           
+                'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                ],
+                'headerOptions' => ['class'=>'text-center'],
+                'contentOptions' => ['class'=>'text-center'],
+                'filterInputOptions'=>['placeholder'=>'เลือก ICD10'],
+                'format'=>'raw'
+            ],                   
+            [        
+               'attribute' => 'diseasethai',
+               'header'=>'โรค',
+               'pageSummary' => 'รวมจำนวนราย ',
+                'filter'=>ArrayHelper::map(\app\models\Year::find()->orderBy('diseasethai')->asArray()->all(), 'diseasethai', 'diseasethai'),
+                'filterType'=>GridView::FILTER_SELECT2,           
+                'filterWidgetOptions'=>[
+                    'pluginOptions'=>['allowClear'=>true],
+                ],
+                'headerOptions' => ['class'=>'text-center'],
+                'filterInputOptions'=>['placeholder'=>'เลือก ชื่อโรค'],
+                'format'=>'raw'
+            ],
+            [
+            'class' => 'kartik\grid\DataColumn',
+            'attribute' => '2006',
+            'header'=>'2006',    
+            'pageSummary' => true,
+            'filter'=>FALSE,    
+            'vAlign' => 'middle',
+            'contentOptions' => ['class'=>'text-center'],
+             ],
+            [
+            'class' => 'kartik\grid\DataColumn',
+            'attribute' => '2007',
+            'header'=>'2007',    
+            'pageSummary' => true,
+            'filter'=>FALSE,    
+            'vAlign' => 'middle',
+            'contentOptions' => ['class'=>'text-center'],
+             ],
+             [
+            'class' => 'kartik\grid\DataColumn',
+            'attribute' => '2008',
+            'header'=>'2008',    
+            'pageSummary' => true,
+            'filter'=>FALSE,    
+            'vAlign' => 'middle',
+            'contentOptions' => ['class'=>'text-center'],
+             ],
+             [
+            'class' => 'kartik\grid\DataColumn',
+            'attribute' => '2009',
+            'header'=>'2009',    
+            'pageSummary' => true,
+            'filter'=>FALSE,    
+            'vAlign' => 'middle',
+            'contentOptions' => ['class'=>'text-center'],
+             ],
+             [
+            'class' => 'kartik\grid\DataColumn',
+            'attribute' => '2010',
+            'header'=>'2010',    
+            'pageSummary' => true,
+            'filter'=>FALSE,    
+            'vAlign' => 'middle',
+            'contentOptions' => ['class'=>'text-center'],
+             ],
+             [
+            'class' => 'kartik\grid\DataColumn',
+            'attribute' => '2011',
+            'header'=>'2011',    
+            'pageSummary' => true,
+            'filter'=>FALSE,    
+            'vAlign' => 'middle',
+            'contentOptions' => ['class'=>'text-center'],
+             ],
+             [
+            'class' => 'kartik\grid\DataColumn',
+            'attribute' => '2012',
+            'header'=>'2012',    
+            'pageSummary' => true,
+            'filter'=>FALSE,    
+            'vAlign' => 'middle',
+            'contentOptions' => ['class'=>'text-center'],
+             ],
+             [
+            'class' => 'kartik\grid\DataColumn',
+            'attribute' => '2013',
+            'header'=>'2013',    
+            'pageSummary' => true,
+            'filter'=>FALSE,    
+            'vAlign' => 'middle',
+            'contentOptions' => ['class'=>'text-center'],
+             ],
+             [
+            'class' => 'kartik\grid\DataColumn',
+            'attribute' => '2014',
+            'header'=>'2014',    
+            'pageSummary' => true,
+            'filter'=>FALSE,    
+            'vAlign' => 'middle',
+            'contentOptions' => ['class'=>'text-center'],
+             ],
 
-            //            [
-//                'class' => 'yii\grid\ActionColumn',
-//                'options'=>['style'=>'width:90px;'],
-//                'template'=>'<div class="btn-group btn-group-sm" role="group" aria-label="...">{update}{view}{delete}</div>',
-//                'buttons'=>[
-//                    'view'=>function($url,$model,$key){
-//                        return Html::a('<i class="glyphicon glyphicon-eye-open"></i>',$url,['class'=>'btn btn-default']);
-//                    },                    
-//                   'update'=>function($url,$model,$key){                        
-//                       return  Html::a('<i class="glyphicon glyphicon-pencil"></i> Approve', ['occupation/update', 'id' => $model->id], ['class' => 'btn btn-success']);
-//                    
-//                   },                  
-//                            
-//                    'delete'=>function($url,$model,$key){
-//                         return Html::a('<i class="glyphicon glyphicon-trash"></i>  Delete !?', $url,[
-//                               'title' => Yii::t('yii', 'Delete'),
-//                                'data-confirm' => Yii::t('yii', 'คุณต้องการลบไฟล์นี้?'),
-//                                'data-method' => 'post',
-//                                'data-pjax' => '0',
-//                                'class'=>'btn btn-danger'
-//                                ]);
-//                    }
+            ];           
+            echo GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'columns' => $gridColumns,
+            'responsive' => true,
+            'hover' => true,
+            'floatHeader' => true,        
+            'showPageSummary' => true,
+    //      'beforeHeader'=>[
+//                [
+//                    'columns'=>[
+//                        ['content'=>'ลำดับที่', 'options'=>['colspan'=>1, 'class'=>'text-center warning']], 
+//                        ['content'=>'', 'options'=>['colspan'=>1, 'class'=>'text-center warning']], 
+//                        ['content'=>'', 'options'=>['colspan'=>3, 'class'=>'text-center warning']], 
+//                        ['content'=>'', 'options'=>['colspan'=>1, 'class'=>'text-center warning']],
+//                    ],
+//                    'options'=>['class'=>'skip-export'] // remove this row from export
 //                ]
-//            ], 
-        ]
-    ]); ?>
+//                     ],
+        'panel' => [           
+            'type' => GridView::TYPE_PRIMARY,
+            'heading' => 'สาเหตุการตาย : รายปี ',
+        ],
+    ]);
+    ?>
 <?php Pjax::end();?>
 </div>

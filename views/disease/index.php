@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             //'amphur',
             //'tumbon',
+            
             [
             'attribute' => 'ampurname',
             'header'=>'อำเภอ',    
@@ -136,7 +137,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                     ],
         'panel' => [           
             'type' => GridView::TYPE_INFO,
-            'heading' => 'สาเหตุการตาย : รายโรค ',
+            'heading' => 'สาเหตุการตาย : แยกตามรายโรค ',
         ],
     ]);
     ?>
