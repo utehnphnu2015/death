@@ -152,7 +152,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                     ],
         'panel' => [           
             'type' => GridView::TYPE_SUCCESS,
-            'heading' => 'สาเหตุการตาย : แยกตามอาชีพ ',
+            'heading' => 'สาเหตุการตาย : แยกกลุ่มอาชีพ ',
         ],
     ]);
     ?>

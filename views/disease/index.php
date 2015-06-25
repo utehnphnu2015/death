@@ -137,7 +137,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                     ],
         'panel' => [           
             'type' => GridView::TYPE_INFO,
-            'heading' => 'สาเหตุการตาย : แยกตามรายโรค ',
+            'heading' => 'สาเหตุการตาย : แยกตามกลุ่มโรค ',
         ],
     ]);
     ?>
