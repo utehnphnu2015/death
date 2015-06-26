@@ -41,7 +41,8 @@
         "kartik-v/yii2-editable": "*",
         "dmstr/yii2-adminlte-asset": "2.*",
         "2amigos/yii2-chartjs-widget": "~2.0",
-        "2amigos/yii2-highcharts-widget": "~1.0"
+        "2amigos/yii2-highcharts-widget": "~1.0",
+        "scotthuangzl/yii2-google-chart": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
