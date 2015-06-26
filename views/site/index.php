@@ -30,9 +30,9 @@ use dosamigos\chartjs\ChartJs;
         <div class="info-box">
             <span class="info-box-icon bg-green"><i class="fa fa-comments-o"></i></span>
             <div class="info-box-content">
-                <span class="info-box-text">กลุ่มโรค</span>
+                <span class="info-box-text">อาชีพ</span>
                 <span class="info-box-number">
-                    <?php echo app\models\Disease::find()->count(); ?>
+                    <?php echo app\models\Occupation::find()->count(); ?>
                     
                 </span>
             </div><!-- /.info-box-content -->
@@ -43,9 +43,9 @@ use dosamigos\chartjs\ChartJs;
         <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="fa fa-building-o"></i></span>
             <div class="info-box-content">
-                <span class="info-box-text">อาชีพ</span>
+                <span class="info-box-text">กลุ่มโรค</span>
                 <span class="info-box-number">
-                    <?php echo app\models\Occupation::find()->count(); ?>
+                    <?php echo app\models\Disease::find()->count(); ?>
                 </span>
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->

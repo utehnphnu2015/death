@@ -3,10 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\helpers\Json;
-use yii\db\Expression;
 
 /**
  * This is the model class for table "temp_occupation".
@@ -28,6 +24,7 @@ class Occupation extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    
     const AMPUR_A = 01;
     const AMPUR_B = 02;
     const AMPUR_C = 03;

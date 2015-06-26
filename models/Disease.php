@@ -7,6 +7,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\helpers\Json;
 use yii\db\Expression;
+use app\models\Cdisease;
 
 /**
  * This is the model class for table "temp_disease".
@@ -75,9 +76,10 @@ class Disease extends \yii\db\ActiveRecord
             'total' => 'Total',
         ];
     }
-    public function getTumbon(){
-        return $this->hasOne(Ctambon::className(), ['tamboncode'=>'tumbon']);
+    public function getCdiseases(){
+        return $this->hasOne(Cdisease::className(), ['diagcode'=>'ncause']);
     }
-    
-
+    public function getCtambon(){
+        return $this->hasOne(Ctambon::className(), ['tambonname'=>'tambonname']);
+    }
 }
