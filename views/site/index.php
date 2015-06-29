@@ -1,16 +1,21 @@
 
 <?php
-$this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
-    'depends' => [\yii\web\JqueryAsset::className()]
-]);
+
+//$this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard.js', [
+//    'depends' => [\yii\web\JqueryAsset::className()]
+//]);
 /* @var $this yii\web\View */
 $this->title = 'Death Cause';
 
 //use miloschuman\highcharts\Highcharts;
+use assets\DashboardAsset;
 use dosamigos\chartjs\ChartJs;
 use miloschuman\highcharts\Highcharts;
 use scotthuangzl\googlechart\GoogleChart;
 use yii\helpers\Url;
+
+
+//DashboardAsset::register($this);
 ?>
 
 <div class="site-index">
@@ -119,7 +124,7 @@ use yii\helpers\Url;
     ]
 ]);?>
 
-    </div>
+</div><p>
 
 <div class="row">
     <!-- Left col -->

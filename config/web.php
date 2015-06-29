@@ -1,9 +1,11 @@
 <?php
+
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'Death Cause',
-    'language'=>'TH',  
+    'name' => 'Death Cause',
+    'id'=>'basic',
+    'language'=>'th',  
     'name'=>'Death Cause',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
