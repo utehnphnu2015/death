@@ -8,6 +8,7 @@ use app\models\DiseaseSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ArrayDataProvider;
 
 /**
  * DiseaseController implements the CRUD actions for Disease model.
@@ -117,5 +118,22 @@ class DiseaseController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    public function actionReport1(){
+        $connection = Yii::$app->db;
+        $data = $connection->createCommand('
+            SELECT sum(total) as tt,ncause FROM temp_disease 
+            WHERE dyear="2014"
+            GROUP BY ncause
+            ORDER BY tt DESC limit 5
+            ')->queryAll();  
+        $dataProvider = new ArrayDataProvider([
+            'allModels'=>$data,
+                       
+        ]);
+        return $this->render('report1',[
+            'dataProvider'=>$dataProvider,
+            //'yy'=>$yy,'mm'=>$mm,'cnt'=>$cnt,
+        ]);
     }
 }

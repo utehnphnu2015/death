@@ -122,7 +122,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'columns' => $gridColumns,
             'responsive' => true,
             'hover' => true,
-            'floatHeader' => true,        
+            'floatHeader' => FALSE,        
             'showPageSummary' => true,
     //      'beforeHeader'=>[
 //                [

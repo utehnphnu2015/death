@@ -132,7 +132,7 @@ use yii\helpers\Url;
         <!-- MAP & BOX PANE -->
         <div class="box box-success">
             <div class="box-header with-border">
-                <h3 class="box-title">การตายแยกตามกลุ่มโรค(5อันดับแรก)</h3>
+                <h3 class="box-title">การตายแยกตามกลุ่มโรค (5อันดับแรก ปีล่าสุด)</h3>
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     
@@ -149,11 +149,11 @@ use yii\helpers\Url;
                         echo GoogleChart::widget(array('visualization' => 'PieChart',
                             'data' => array(
                                 array('Task', 'Hours per Day'),
-                                array('R99', 10707),
-                                array('A419', 5089),
-                                array('R54', 3788),
-                                array('J189', 1786),
-                                array('Y349', 1590)
+                                array('R99', 799),
+                                array('A419', 484),
+                                array('R54', 257),
+                                array('J189', 241),
+                                array('I619', 157)
                                     ),
                                     'options' => array('title' => '')));
                                 ?>
